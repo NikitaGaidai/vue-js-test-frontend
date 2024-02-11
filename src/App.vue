@@ -1,6 +1,7 @@
 <script setup>
 import PageContainer from '@/components/PageContainer.vue'
 import Card from '@/components/BasicCard.vue'
+import Badge from '@/components/ui/PillDotBadge.vue'
 </script>
 
 <template>
@@ -19,9 +20,15 @@ import Card from '@/components/BasicCard.vue'
       </div>
     </Card>
     <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 md:space-y-0">
-      <div class="basis-1/4">
+      <div class="basis-1/4 space-y-3">
         <Card>
-          Database state
+          <div class="flex space-x-3 items-center justify-between">
+            <p class="font-medium text-nowrap">Backend Status</p>
+            <Badge type="success">Online</Badge>
+          </div>
+        </Card>
+        <Card>
+          <p>Пользователей в БД:</p>
         </Card>
       </div>
       <div class="flex-grow">
