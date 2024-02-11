@@ -1,7 +1,14 @@
 <script setup>
 import PageContainer from '@/components/PageContainer.vue'
 import Card from '@/components/BasicCard.vue'
-import Badge from '@/components/ui/PillDotBadge.vue'
+import BackendStatusCard from '@/components/includes/BackendStatusCard.vue'
+import UsersCountCard from '@/components/includes/UsersCountCard.vue'
+import { ref } from 'vue'
+
+const backend = ref(false)
+const setBackendStatus = (payload) => {
+  backend.value = payload.value
+}
 </script>
 
 <template>
@@ -21,15 +28,8 @@ import Badge from '@/components/ui/PillDotBadge.vue'
     </Card>
     <div class="flex flex-col space-y-3 md:flex-row md:space-x-3 md:space-y-0">
       <div class="basis-1/4 space-y-3">
-        <Card>
-          <div class="flex space-x-3 items-center justify-between">
-            <p class="font-medium text-nowrap">Backend Status</p>
-            <Badge type="success">Online</Badge>
-          </div>
-        </Card>
-        <Card>
-          <p>Пользователей в БД:</p>
-        </Card>
+        <BackendStatusCard @status-changed="setBackendStatus"/>
+        <UsersCountCard :backend-online="backend"/>
       </div>
       <div class="flex-grow">
         <Card>
